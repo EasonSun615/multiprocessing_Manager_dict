@@ -9,9 +9,9 @@ from multiprocessing import Manager
 def main():
 	manager = Manager()
 	const.aDict = manager.dict()
-	# error 写成下面这样相当于重新给变量赋值了，变成了普通的dict,不能在进程间共享
-	# const.aDict = {'1':'sun','2':'yi','3':'rong'}
-	d = {'1':'sun','2':'yi','3':'rong'}
+	# 写成下面这样相当于重新给变量赋值了，变成了普通的dict,不能在进程间共享
+	# 错误做法 ：const.aDict = {'1':'sun','2':'yi','3':'rong'}
+	d = {'1':[1,2,3],'2':[4,5,6],'3':[7]}
 	for key, value in d.items():
 		const.aDict[key] = value
 	print("const.aDict",const.aDict)	
